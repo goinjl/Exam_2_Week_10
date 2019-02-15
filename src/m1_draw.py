@@ -46,8 +46,12 @@ def test_draw_a_picture():
 
 
 ###############################################################################
-# def draw_a_picture(point, n, color, window):
-#     """
+
+#def draw_a_picture(point, n, color, window):
+
+
+
+
 #     See   m1_draw_problem_picture.pdf   in this project for pictures
 #     that may help you better understand the following specification:
 #
@@ -59,10 +63,10 @@ def test_draw_a_picture():
 #
 #     What goes out:  Nothing (i.e., None).
 #     Side effects:
-#       Draws an rg.Circle with the given point as the center.
-#       The radius of the rg.Circle is 100 pixels
-#       Draws an rg.Rectangle with the given point as the center.
-#       The width of the Rectangle is 160 pixels and the height is 80 pixels
+#       Draws an rg.Circle with the given point as the center.x
+#       The radius of the rg.Circle is 100 pixelsx
+#       Draws an rg.Rectangle with the given point as the center.x
+#       The width of the Rectangle is 160 pixels and the height is 80 pixelsx
 #       Draws n lines from the Center of the Rectangle to the top line
 #       of the Rectangle that are equally spaced
 #       The color is used as the line colors unless the number of the line
@@ -127,7 +131,23 @@ def is_prime(n):
 #
 #
 #
+
+
 def draw_a_picture(point, n, color, window):
+    circle = rg.Circle(point, 100)
+    circle.attach_to(window)
+    rectangle = rg.Rectangle((point.x - 80, point.y - 40), (point.x + 80, point.y - 40))
+    rectangle.center = point
+    rectangle.attach_to(window)
+    line = rg.Line(rectangle.center, point.x)
+    for k in range(n):
+        if is_prime(n):
+            line.color = color
+        else:
+            line.color = 'orange'
+        line.attach_to(window)
+
+    window.render(0.5)
 
     pass
 
